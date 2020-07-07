@@ -9,7 +9,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.subhuman.rule=Host(`subhuman.services`) || Host(`portfolio.subhuman.services`)"
-      - "traefik.http.routers.subhuman.tls.certresolver=staging"
+      - "traefik.http.routers.subhuman.tls.certresolver=leresolver"
       - "traefik.http.routers.subhuman.entrypoints=websecure"
       - "traefik.http.routers.subhuman.middlewares=secure-compress@file"
       - "traefik.http.services.subhuman.loadbalancer.server.port=80"
