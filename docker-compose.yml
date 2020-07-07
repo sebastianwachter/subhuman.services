@@ -1,0 +1,20 @@
+version: '3'
+services:
+  subhuman:
+    build: .
+    restart: unless-stopped
+    container_name: subhuman.services
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.subhuman.rule=Host(`subhuman.services`) || Host(`portfolio.subhuman.services`)"
+      - "traefik.http.routers.subhuman.tls.certresolver=staging"
+      - "traefik.http.routers.subhuman.entrypoints=websecure"
+      - "traefik.http.routers.subhuman.middlewares=secure-compress@file"
+      - "traefik.http.services.subhuman.loadbalancer.server.port=80"
+      - "traefik.docker.network=proxy"
+
+networks:
+  proxy:
+    external: true
