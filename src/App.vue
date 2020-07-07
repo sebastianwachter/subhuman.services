@@ -49,6 +49,6 @@ header {
 }
 
 main {
-  padding: 0 15px 12px;
+  padding: 0 15px 15px;
 }
 </style>
